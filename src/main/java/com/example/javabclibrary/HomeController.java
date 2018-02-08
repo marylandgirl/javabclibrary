@@ -16,4 +16,9 @@ public class HomeController {
     public String listBooks(){
         return "listbooks";
     }
+
+    @GetMapping("/add")
+    public String addBooks(){
+        return "addbooks";
+    }
 }
