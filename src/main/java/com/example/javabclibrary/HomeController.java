@@ -12,8 +12,8 @@ public class HomeController {
         return "mainpage";
     }
 
-    @GetMapping("/show")
+    @GetMapping("/list")
     public String listBooks(){
-        return "showbooks";
+        return "listbooks";
     }
 }
