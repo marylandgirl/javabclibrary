@@ -33,7 +33,7 @@ public class HomeController {
         return "addbooks";
     }
 
-    @PostMapping("processadd")
+    @PostMapping("/processadd")
     public String processAdd(@Valid @ModelAttribute("book") Book book, BindingResult result){
         if (result.hasErrors()){
             return "addbooks";

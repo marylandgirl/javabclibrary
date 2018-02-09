@@ -8,26 +8,34 @@
 </head>
 <body>
 <div th:replace="index :: addnavbar"></div>
-<form>
-    <div class="form-group">
-        <label for="addFormControlInput1">Title</label>
-        <input type="text" class="form-control" id="addFormControlInput1"/>
-    </div>
-    <div class="form-group">
-        <label for="addFormControlInput2">Author</label>
+<form action="#"
+      th:action="@{/processadd}"
+      th:object="${book}"
+      method="post">
+<!--     <div class="form-group">
+        <input type="hidden" class="form-control" id="addFormControlInput1"/>
+        <input field="*{id}"/>
+    </div>-->
+    <input type="hidden" field="*{id}"/>
+   <div class="form-group">
+        <label for="addFormControlInput2">Title</label>
         <input type="text" class="form-control" id="addFormControlInput2"/>
     </div>
     <div class="form-group">
-        <label for="addFormControlInput3">Year of Publication</label>
-        <input type="number" class="form-control" id="addFormControlInput3"/>
+        <label for="addFormControlInput3">Author</label>
+        <input type="text" class="form-control" id="addFormControlInput3"/>
     </div>
     <div class="form-group">
-        <label for="addFormControlInput4">ISBN number</label>
-        <input type="text" class="form-control" id="addFormControlInput4"/>
+        <label for="addFormControlInput4">Year of Publication</label>
+        <input type="number" class="form-control" id="addFormControlInput4"/>
     </div>
     <div class="form-group">
-        <label for="addFormControlInput5">Image</label>
-        <input type="url" class="form-control" id="addFormControlInput5"/>
+        <label for="addFormControlInput5">ISBN number</label>
+        <input type="text" class="form-control" id="addFormControlInput5"/>
+    </div>
+    <div class="form-group">
+        <label for="addFormControlInput6">Image</label>
+        <input type="url" class="form-control" id="addFormControlInput6"/>
     </div> <br/>
     <input type="submit" value="submit"/>
 </form>
