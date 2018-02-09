@@ -17,7 +17,7 @@
         <th>ISBN</th>
         <th>Link</th>
         <th>Borrowed</th>
-        <!--<td>Actions</td>-->
+        <td>Actions</td>
     </tr>
     <tr th:each="book :${books}">
         <td th:text="${book.title}"></td>
@@ -26,7 +26,14 @@
         <td th:text="${book.isbn}"></td>
         <td th:text="${book.image}"></td>
         <td th:text="${book.borrowed}"></td>
-
+        <div th:switch="${book.borrowed}">
+            <p th:case='true'>
+                <td><a th:href="@{/}">Return</a></td>
+            </p>
+            <p th:case='false'>
+                <td><a th:href="@{/}">Borrow</a></td>
+            </p>
+        </div>
     </tr>
 </table>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
