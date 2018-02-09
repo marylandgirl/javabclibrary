@@ -48,7 +48,7 @@ public class HomeController {
     }
 
     @GetMapping("/borrow/{id}")
-    public String showCourse(@PathVariable("id") long id, Model model) {
+    public String showBook(@PathVariable("id") long id, Model model) {
         Book book=bookRepository.findOne(id);
         book.setBorrowed(true);
         model.addAttribute("book", bookRepository.findOne(id));
@@ -60,6 +60,15 @@ public class HomeController {
     @GetMapping("/return")
     public String returnBook(Model model){
         model.addAttribute("books",bookRepository.getAllByBorrowedTrue());
-        return "borrowbooks";
+        /*return "borrowbooks";*/
+        return "listbooks";
+    }
+
+    @GetMapping("/return/{id}")
+    public String returnBook(@PathVariable("id") long id, Model model) {
+        Book book=bookRepository.findOne(id);
+        book.setBorrowed(false);
+        model.addAttribute("book", bookRepository.findOne(id));
+        return "returnone";
     }
 }
