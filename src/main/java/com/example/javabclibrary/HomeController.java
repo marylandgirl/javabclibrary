@@ -37,18 +37,15 @@ public class HomeController {
     @PostMapping("/processadd")
     public String processAdd(@Valid @ModelAttribute("book") Book book, BindingResult result){
         if (result.hasErrors()){
-            System.out.println(book.getTitle());
-            System.out.println(result.getFieldError());
-
             return "addbooks";
         }
         bookRepository.save(book);
-        return "redirect:/";
+        return "redirect:/list";
     }
 
     @GetMapping("/borrow")
     public String borrowBook(Model model){
         model.addAttribute("books",bookRepository.getAllByBorrowedFalse());
-        return "listbooks";
+        return "borrowbooks";
     }
 }
