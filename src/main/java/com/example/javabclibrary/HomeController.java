@@ -24,7 +24,7 @@ public class HomeController {
 
     @GetMapping("/list")
     public String listBooks(Model model){
-        model.addAttribute("book",bookRepository.getAllByBorrowedTrue());
+        model.addAttribute("books",bookRepository.findAll());
         return "listbooks";
     }
 
@@ -44,5 +44,11 @@ public class HomeController {
         }
         bookRepository.save(book);
         return "redirect:/";
+    }
+
+    @GetMapping("/borrow")
+    public String borrowBook(Model model){
+        model.addAttribute("books",bookRepository.getAllByBorrowedFalse());
+        return "listbooks";
     }
 }
