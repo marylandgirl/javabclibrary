@@ -48,7 +48,13 @@ public class HomeController {
 
     @GetMapping("/borrow/{id}")
     public String showCourse(@PathVariable("id") long id, Model model) {
+        Book book=bookRepository.findOne(id);
+        book.setBorrowed(true);
         model.addAttribute("book", bookRepository.findOne(id));
+        /*model.addAttribute("book", bookRepository.findOne(id));*/
+
         return "borrowone";
     }
+
+
 }
