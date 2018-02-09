@@ -8,39 +8,44 @@
 </head>
 <body>
 <div th:replace="index :: addnavbar"></div>
-<form action="#"
+<form data-toggle="validator" role="form" class="needs-validation" action="#"
       th:action="@{/processadd}"
       th:object="${book}"
-      method="post">
+      method="post" >
 <!--     <div class="form-group">
         <input type="hidden" class="form-control" id="addFormControlInput1"/>
         <input field="*{id}"/>
     </div>-->
-    <input type="hidden" field="*{id}"/>
+    <input type="hidden" th:field="*{id}"/>
    <div class="form-group">
         <label>Title</label>
-        <input type="text" field="*{title}"/>
+        <input type="text" th:field="*{title}" class="form-control" required="required"/>
     </div>
     <div class="form-group">
         <label >Author</label>
-        <input type="text" field="*{author}"/>
+        <input type="text" th:field="*{author}" required="required"/>
     </div>
     <div class="form-group">
         <label>Year of Publication</label>
-        <input type="text" field="*{year}"/>
-    </div>
+        <input type="text" th:field="*{year}" minlength="4" pattern="^[0-9]{4,}$" required="required"/>
+ <!--       <span th:if="${#fields.hasErrors('year')}"
+              th:errors="*{year}"></span><br />
+-->    </div>
     <div class="form-group">
         <label>ISBN number</label>
-        <input type="text" field="*{isbn}"/>
+        <input type="text" th:field="*{isbn}"/>
     </div>
     <div class="form-group">
         <label>Image</label>
-        <input type="url" field="*{image}"/>
+        <input type="url" th:field="*{image}"/>
     </div>
 
-    <input type="hidden" field="*{borrowed}"/>
+    <input type="hidden" th:field="*{borrowed}"/>
 
     <input type="submit" value="submit"/>
 </form>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

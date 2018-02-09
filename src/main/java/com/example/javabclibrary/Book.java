@@ -1,5 +1,7 @@
 package com.example.javabclibrary;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,8 +20,8 @@ public class Book {
     private String author;
 
     @NotNull
-    @Size(min =4, max = 4)
-    private int year;
+    @Length(min = 4, max = 4)
+    private String year;
 
     private String isbn;
 
@@ -55,11 +57,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

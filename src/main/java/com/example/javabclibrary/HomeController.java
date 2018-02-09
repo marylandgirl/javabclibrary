@@ -29,13 +29,17 @@ public class HomeController {
     }
 
     @GetMapping("/add")
-    public String addBooks(){
+    public String addBooks(Model model){
+        model.addAttribute("book", new Book());
         return "addbooks";
     }
 
     @PostMapping("/processadd")
     public String processAdd(@Valid @ModelAttribute("book") Book book, BindingResult result){
         if (result.hasErrors()){
+            System.out.println(book.getTitle());
+            System.out.println(result.getFieldError());
+
             return "addbooks";
         }
         bookRepository.save(book);
