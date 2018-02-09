@@ -24,7 +24,10 @@
         <td th:text="${book.author}"></td>
         <td th:text="${book.year}"></td>
         <td th:text="${book.isbn}"></td>
-        <td th:text="${book.image}"></td>
+      <!--  <td th:text="${book.image}"></td>-->
+        <td>
+            <img th:src="@{${book.image}}" th:alt="${book.title}"/>
+        </td>
         <td th:text="${book.borrowed}"></td>
         <div th:switch="${book.borrowed}">
             <p th:case='true'>
