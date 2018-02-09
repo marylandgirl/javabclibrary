@@ -43,7 +43,8 @@ public class HomeController {
     @GetMapping("/borrow")
     public String borrowBook(Model model){
         model.addAttribute("books",bookRepository.getAllByBorrowedFalse());
-        return "borrowbooks";
+       /* return "borrowbooks";*/
+        return "listbooks";
     }
 
     @GetMapping("/borrow/{id}")
@@ -56,5 +57,9 @@ public class HomeController {
         return "borrowone";
     }
 
-
+    @GetMapping("/return")
+    public String returnBook(Model model){
+        model.addAttribute("books",bookRepository.getAllByBorrowedTrue());
+        return "borrowbooks";
+    }
 }

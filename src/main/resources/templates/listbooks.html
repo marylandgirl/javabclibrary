@@ -28,7 +28,8 @@
         <td th:text="${book.borrowed}"></td>
         <div th:switch="${book.borrowed}">
             <p th:case='true'>
-                <td><a th:href="@{/}">Return</a></td>
+                <!--<td><a th:href="@{/}">Return</a></td>-->
+                <td><a th:href="@{/return/{id}(id=${book.id})}">Return</a></td>
             </p>
             <p th:case='false'>
                 <td><a th:href="@{/borrow/{id}(id=${book.id})}">Borrow</a></td>
