@@ -31,7 +31,7 @@
                 <td><a th:href="@{/}">Return</a></td>
             </p>
             <p th:case='false'>
-                <td><a th:href="@{/}">Borrow</a></td>
+                <td><a th:href="@{/borrow/{id}(id=${book.id})}">Borrow</a></td>
             </p>
         </div>
     </tr>
